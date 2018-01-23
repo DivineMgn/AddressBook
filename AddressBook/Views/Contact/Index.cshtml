@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AddressBook.Models.Contact>
+
+@{
+	ViewBag.Title = "Все контакты";
+}
+ 
+
+<div class="page-header">
+	<h2>@ViewBag.Title</h2>
+</div>
+
+
+
+@if (Model != null && Model.Count() > 0)
+{
+	<div class="list-group">
+		@foreach (var contact in Model)
+		{
+
+		<a class="list-group-item active">
+			<h4 class="list-group-item-heading">email</h4>
+			<p class="list-group-item-text">1 </p>
+			<p class="list-group-item-text">2 </p>
+			<p class="list-group-item-text">3 </p>
+		</a>
+
+		}
+	</div>
+}
+else
+{
+	<p>В адресной книге отсутствуют контакты.</p>
+	 
+	@Html.ActionLink(
+	linkText: "Добавить контакт",
+	actionName: "Create",
+	controllerName: "Contact",
+	routeValues: null,
+	htmlAttributes: new { @class = "btn btn - default" })
+}

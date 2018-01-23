@@ -1,0 +1,29 @@
+﻿@{
+	ViewBag.Title = "Создание нового контакта";
+}
+
+
+<div class="page-header">
+	<h2>@ViewBag.Title</h2>
+</div>
+
+
+@using (Html.BeginForm("Create", "Contact", FormMethod.Post))
+{
+
+	<p>Введите свое имя: </p>
+	@Html.TextBox("Person", "Введите имя")
+	<p>Введите адрес :</p>
+	@Html.TextBox("Address", "Введите адрес")
+	 
+
+
+	<button type="submit" class="btn btn-danger">Сохранить</button>
+}
+@*<form method="post" action="">
+		<input type="text" required />
+		<input type="text" required />
+		<input type="text" required />
+
+		<input type="email" required />
+	</form>*@
