@@ -1,40 +1,100 @@
 ﻿@model IEnumerable<AddressBook.Models.Contact>
 
+
 @{
 	ViewBag.Title = "Все контакты";
 }
- 
+
 
 <div class="page-header">
-	<h2>@ViewBag.Title</h2>
+	<h2 class="h3">@ViewBag.Title</h2>
 </div>
-
 
 
 @if (Model != null && Model.Count() > 0)
 {
+
+	@Html.ActionLink(
+				linkText: "Добавить контакт",
+				actionName: "Create",
+				controllerName: "Contact",
+				routeValues: null,
+				htmlAttributes: new { @class = "btn btn-outline-primary mb-2" })
+	
+
 	<div class="list-group">
-		@foreach (var contact in Model)
+		@foreach (AddressBook.Models.Contact contact in Model)
 		{
-
-		<a class="list-group-item active">
-			<h4 class="list-group-item-heading">email</h4>
-			<p class="list-group-item-text">1 </p>
-			<p class="list-group-item-text">2 </p>
-			<p class="list-group-item-text">3 </p>
-		</a>
-
+			<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1">@contact.FullName</h5>
+					<button type="button" class="close" aria-label="Close" data-toggle="modal" data-target="#deleteConfirmationModal"
+							data-contactid="@contact.Id"
+							data-contactname="@contact.FullName">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<p class="mb-1">Фамилия: @contact.LastName</p>
+				<p class="mb-1">Имя: @contact.FirstName</p>
+				<p class="mb-1">Отчество: @contact.SecondName</p>
+				<p class="mb-1">Адрес эл. почты: @contact.Email</p>
+			</a>
 		}
 	</div>
 }
 else
 {
 	<p>В адресной книге отсутствуют контакты.</p>
-	 
+
 	@Html.ActionLink(
-	linkText: "Добавить контакт",
-	actionName: "Create",
-	controllerName: "Contact",
-	routeValues: null,
-	htmlAttributes: new { @class = "btn btn - default" })
+				linkText: "Добавить контакт",
+				actionName: "Create",
+				controllerName: "Contact",
+				routeValues: null,
+				htmlAttributes: new { @class = "btn btn-outline-primary" })
 }
+
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="ModalLabel">Подвердите удаление</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p id="deleteMessage">Вы действительно хотите удалить контакт ""?</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Отмена</button>
+				@using (Html.BeginForm("Delete", "Contact", FormMethod.Post))
+				{
+					<input type="hidden" id="contactId" name="id" value="" />
+					<button type="submit" class="btn btn-outline-danger">Удалить</button>
+				}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+@section Scripts
+{
+	<script type="text/javascript">
+		/**/
+		$('#deleteConfirmationModal').on('show.bs.modal', function (event) {
+			var button = $(event.relatedTarget);
+
+			var contactId = button.data('contactid');
+			var contactname = button.data('contactname');
+
+			var modal = $(this);
+
+			modal.find('#deleteMessage').text('Вы действительно хотите удалить контакт "' + contactname + '"?');
+			modal.find('#contactId').val(contactId);
+		})
+/**/
+	</script>
+}
+

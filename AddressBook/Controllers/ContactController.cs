@@ -45,6 +45,7 @@ namespace AddressBook.Controllers
         }
 
 
+        [HttpPost]
         public async Task<ActionResult> Delete(string id)
         {
             var isDeleted = await _contactService.RemoveContactAsync(id);

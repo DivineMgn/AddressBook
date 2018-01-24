@@ -1,4 +1,6 @@
-﻿@{
+﻿@model AddressBook.Models.Contact
+
+@{
 	ViewBag.Title = "Создание нового контакта";
 }
 
@@ -10,20 +12,25 @@
 
 @using (Html.BeginForm("Create", "Contact", FormMethod.Post))
 {
+	<div class="form-group">
+		<label for="firstName">Имя</label>
+		<input type="text" class="form-control" id="firstName" name="firstName" placeholder="Введите имя" required>
+	</div>
 
-	<p>Введите свое имя: </p>
-	@Html.TextBox("Person", "Введите имя")
-	<p>Введите адрес :</p>
-	@Html.TextBox("Address", "Введите адрес")
-	 
+	<div class="form-group">
+		<label for="lastName">Фамилия</label>
+		<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Введите фамилию" required>
+	</div>
 
+	<div class="form-group">
+		<label for="secondName">Отчество</label>
+		<input type="text" class="form-control" id="secondName" name="secondName" placeholder="Введите отчество">
+	</div>
 
-	<button type="submit" class="btn btn-danger">Сохранить</button>
+	<div class="form-group">
+		<label for="email">Адрес электронной почты</label>
+		<input type="email" class="form-control" id="email" name="email" placeholder="Введите адрес электронной почты" required>
+	</div>
+
+	<button type="submit" class="btn btn-outline-primary">Сохранить</button>
 }
-@*<form method="post" action="">
-		<input type="text" required />
-		<input type="text" required />
-		<input type="text" required />
-
-		<input type="email" required />
-	</form>*@

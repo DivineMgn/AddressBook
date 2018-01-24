@@ -9,30 +9,35 @@ namespace AddressBook.Models
         [BsonId]
         [BsonElement("id")]
         [BsonRepresentation(BsonType.ObjectId)]
-
-        public string Id { get; set; }
+        public ObjectId Id { get; set; }
 
         [BsonRequired]
         [BsonElement("firstName")]
+        [Required]
         [Display(Name = "Имя")]
+        [DataType(DataType.Text)]
         public string FirstName { get; set; }
 
-        [BsonRequired]
         [BsonElement("secondName")]
         [Display(Name = "Отчество")]
+        [DataType(DataType.Text)]
         public string SecondName { get; set; }
 
         [BsonRequired]
         [BsonElement("lastName")]
+        [Required]
         [Display(Name = "Фамилия")]
+        [DataType(DataType.Text)]
         public string LastName { get; set; }
 
         [BsonRequired]
         [BsonElement("email")]
+        [Required]
         [Display(Name = "Адрес электронной почты")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [BsonIgnore]
-        public string FullName => $"{this.LastName} {this.FirstName} {this.SecondName}".Trim();
+        public string FullName => $"{this.LastName} {this.FirstName}".Trim();
     }
 }
