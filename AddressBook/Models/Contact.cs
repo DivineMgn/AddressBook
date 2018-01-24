@@ -13,26 +13,29 @@ namespace AddressBook.Models
 
         [BsonRequired]
         [BsonElement("firstName")]
-        [Required]
+        [Required(ErrorMessage ="Имя обязательно для заполнения")]
         [Display(Name = "Имя")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "Имя не может быть короче 2 символов и длинее 50")] 
         [DataType(DataType.Text)]
         public string FirstName { get; set; }
 
         [BsonElement("secondName")]
-        [Display(Name = "Отчество")]
+        [Display(Name = "Отчество")] 
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "Отчество не может быть короче 2 символов и длинее 50")]
         [DataType(DataType.Text)]
         public string SecondName { get; set; }
 
         [BsonRequired]
         [BsonElement("lastName")]
-        [Required]
+        [Required(ErrorMessage = "Фамилия обязательна для заполнения")]
         [Display(Name = "Фамилия")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "Фамилия не может быть короче 2 символов и длинее 50")]
         [DataType(DataType.Text)]
         public string LastName { get; set; }
 
         [BsonRequired]
         [BsonElement("email")]
-        [Required]
+        [Required(ErrorMessage = "Адрес эл. почты обязателен для заполнения")]
         [Display(Name = "Адрес электронной почты")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }

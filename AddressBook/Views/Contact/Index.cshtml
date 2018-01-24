@@ -15,12 +15,12 @@
 {
 
 	@Html.ActionLink(
-				linkText: "Добавить контакт",
-				actionName: "Create",
-				controllerName: "Contact",
-				routeValues: null,
-				htmlAttributes: new { @class = "btn btn-outline-primary mb-2" })
-	
+			linkText: "Добавить контакт",
+			actionName: "Create",
+			controllerName: "Contact",
+			routeValues: null,
+			htmlAttributes: new { @class = "btn btn-outline-primary my-2" })
+
 
 	<div class="list-group">
 		@foreach (AddressBook.Models.Contact contact in Model)
@@ -31,33 +31,46 @@
 					<button type="button" class="close" aria-label="Close" data-toggle="modal" data-target="#deleteConfirmationModal"
 							data-contactid="@contact.Id"
 							data-contactname="@contact.FullName">
-						<span aria-hidden="true">&times;</span>
+						<span aria-hidden="true" class="text-danger">&times;</span>
 					</button>
 				</div>
-				<p class="mb-1">Фамилия: @contact.LastName</p>
-				<p class="mb-1">Имя: @contact.FirstName</p>
-				<p class="mb-1">Отчество: @contact.SecondName</p>
-				<p class="mb-1">Адрес эл. почты: @contact.Email</p>
+				@*<dl class="row">
+					<dt class="col-sm-3">Адрес эл. почты</dt>
+					<dd class="col-sm-9">@contact.Email</dd>
+
+					<dt class="col-sm-3">Фамилия</dt>
+					<dd class="col-sm-9">@contact.LastName</dd>
+
+					<dt class="col-sm-3">Имя</dt>
+					<dd class="col-sm-9">@contact.FirstName</dd>
+
+					<dt class="col-sm-3">Отчество</dt>
+					<dd class="col-sm-9">@contact.SecondName</dd>
+				</dl>*@
+				<p class="mb-1"><b>Адрес эл. почты:</b> @contact.Email</p>
+				<p class="mb-1"><b>Фамилия:</b> @contact.LastName</p>
+				<p class="mb-1"><b>Имя:</b> @contact.FirstName</p>
+				<p class="mb-1"><b>Отчество:</b> @contact.SecondName</p>
 			</a>
 		}
 	</div>
 }
 else
 {
-	<p>В адресной книге отсутствуют контакты.</p>
+	<p class="text-muted">В адресной книге отсутствуют контакты.</p>
 
 	@Html.ActionLink(
-				linkText: "Добавить контакт",
-				actionName: "Create",
-				controllerName: "Contact",
-				routeValues: null,
-				htmlAttributes: new { @class = "btn btn-outline-primary" })
+			linkText: "Добавить контакт",
+			actionName: "Create",
+			controllerName: "Contact",
+			routeValues: null,
+			htmlAttributes: new { @class = "btn btn-outline-primary" })
 }
 
 <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
-			<div class="modal-header">
+			<div class="modal-header bg-danger text-white">
 				<h5 class="modal-title" id="ModalLabel">Подвердите удаление</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -70,7 +83,7 @@ else
 				<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Отмена</button>
 				@using (Html.BeginForm("Delete", "Contact", FormMethod.Post))
 				{
-					<input type="hidden" id="contactId" name="id" value="" />
+					<input type="hidden" id="contactId" name="id" value=""/>
 					<button type="submit" class="btn btn-outline-danger">Удалить</button>
 				}
 			</div>
@@ -81,20 +94,17 @@ else
 
 @section Scripts
 {
-	<script type="text/javascript">
-		/**/
-		$('#deleteConfirmationModal').on('show.bs.modal', function (event) {
-			var button = $(event.relatedTarget);
+<script type="text/javascript">
+	$('#deleteConfirmationModal').on('show.bs.modal', function (event) {
+		var button = $(event.relatedTarget);
 
-			var contactId = button.data('contactid');
-			var contactname = button.data('contactname');
+		var contactId = button.data('contactid');
+		var contactname = button.data('contactname');
 
-			var modal = $(this);
+		var modal = $(this);
 
-			modal.find('#deleteMessage').text('Вы действительно хотите удалить контакт "' + contactname + '"?');
-			modal.find('#contactId').val(contactId);
-		})
-/**/
-	</script>
+		modal.find('#deleteMessage').text('Вы действительно хотите удалить контакт "' + contactname + '"?');
+		modal.find('#contactId').val(contactId);
+	})
+</script>
 }
-
