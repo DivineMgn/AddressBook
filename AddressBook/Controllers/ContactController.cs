@@ -9,20 +9,21 @@ namespace AddressBook.Controllers
 {
     public class ContactController : Controller
     {
-        private readonly  IContactService _contactService; 
+        private readonly IContactService _contactService;
 
         public ContactController(IContactService contactService)
         {
-            _contactService = contactService; 
+            _contactService = contactService;
         }
 
 
         public async Task<ActionResult> Index()
-        { 
+        {
             var dtoContacts = await _contactService.GetAllContactsAsync();
-            
+
             // TODO: AutoMapper
-            var contacts = dtoContacts.Cast<ContactDto>().Select(c =>new Contact() {
+            var contacts = dtoContacts.Cast<ContactDto>().Select(c => new Contact()
+            {
                 Id = c.Id,
                 FirstName = c.FirstName,
                 LastName = c.LastName,
@@ -52,7 +53,7 @@ namespace AddressBook.Controllers
                     LastName = contact.LastName,
                     SecondName = contact.SecondName,
                     Email = contact.Email
-                }); 
+                });
 
                 return RedirectToAction(nameof(this.Index));
             }
@@ -64,11 +65,7 @@ namespace AddressBook.Controllers
         [HttpPost]
         public async Task<ActionResult> Delete(long id)
         {
-            if (id > 0)
-            {
-                await _contactService.DeleteContactAsync(id);
-            } 
-
+            await _contactService.DeleteContactAsync(id);
             return RedirectToAction(nameof(this.Index));
         }
     }
