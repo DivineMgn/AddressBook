@@ -15,13 +15,15 @@ namespace ContactServiceLib
         public long CreateContact(ContactDto contact)
         {
             // TODO: AutoMapper
-            var newContact = _context.Contacts.Add(new Contact()
-            {
-                FirstName = contact.FirstName,
-                LastName = contact.LastName,
-                SecondName = contact.LastName,
-                Email = contact.Email
-            });
+            var newContact = _context.Contacts.Add(
+                new Contact()
+                {
+                    FirstName = contact.FirstName,
+                    LastName = contact.LastName,
+                    SecondName = contact.LastName,
+                    Email = contact.Email
+                });
+            _context.Contacts.Add(newContact);
             _context.SaveChanges();
 
             return newContact.Id;
@@ -41,7 +43,8 @@ namespace ContactServiceLib
         public IEnumerable<ContactDto> GetAllContacts()
         {
             // TODO: AutoMapper
-            var contacts = _context.Contacts.Select(c => new ContactDto {
+            var contacts = _context.Contacts.Select(c => new ContactDto
+            {
                 Id = c.Id,
                 FirstName = c.FirstName,
                 LastName = c.LastName,
