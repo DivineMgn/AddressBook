@@ -1,11 +1,12 @@
-﻿using AddressBook.Services;
-using Autofac;
+﻿using Autofac;
 using Autofac.Integration.Mvc;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+
+using AddressBook.ContactServiceReference;
 
 namespace AddressBook
 {
@@ -25,8 +26,11 @@ namespace AddressBook
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterControllers(Assembly.GetExecutingAssembly());
-            builder.RegisterType<ContactService>().As<IContactService>();
+            builder.RegisterControllers(Assembly.GetExecutingAssembly()); 
+            builder
+                .RegisterType<ContactServiceClient>()
+                .As<IContactService>()
+                .SingleInstance();
 
             var container = builder.Build();
 

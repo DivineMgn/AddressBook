@@ -1,38 +1,34 @@
-﻿using AddressBook.Models;
-using AddressBook.Services;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using AddressBook.ContactServiceReference;
+using AddressBook.Models;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
- 
+
 
 namespace AddressBook.Controllers
 {
     public class ContactController : Controller
     {
-
-        private readonly IContactService _contactService;
-        private readonly AddressBookDBContext _context;
-
+        private readonly  IContactService _contactService; 
 
         public ContactController(IContactService contactService)
         {
- 
-
-            _contactService = contactService;
-            _context = new AddressBookDBContext();
+            _contactService = contactService; 
         }
 
 
         public async Task<ActionResult> Index()
-        {
-            // mongo
-            //var contacts = await _contactService.GetAllContactsAsync();
-
-            var contacts = await _context.Contacts.ToListAsync();
+        { 
+            var dtoContacts = await _contactService.GetAllContactsAsync();
+            
+            // TODO: AutoMapper
+            var contacts = dtoContacts.Cast<ContactDto>().Select(c =>new Contact() {
+                Id = c.Id,
+                FirstName = c.FirstName,
+                LastName = c.LastName,
+                SecondName = c.SecondName,
+                Email = c.Email
+            });
 
             return View(contacts);
         }
@@ -49,10 +45,15 @@ namespace AddressBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                // mongo
-                //await _contactService.AddContactAsync(contact);
-                _context.Contacts.Add(contact);
-                await _context.SaveChangesAsync();
+                // TODO: AutoMapper
+                var contactId = await _contactService.CreateContactAsync(new ContactDto()
+                {
+                    FirstName = contact.FirstName,
+                    LastName = contact.LastName,
+                    SecondName = contact.SecondName,
+                    Email = contact.Email
+                }); 
+
                 return RedirectToAction(nameof(this.Index));
             }
 
@@ -61,17 +62,12 @@ namespace AddressBook.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(long id)
         {
-            // mongo
-            //var isDeleted = await _contactService.RemoveContactAsync(mongoId);
-
-            var contact = await _context.Contacts.FindAsync(id);
-            if (contact != null)
+            if (id > 0)
             {
-                _context.Contacts.Remove(contact);
-                await _context.SaveChangesAsync();
-            }
+                await _contactService.DeleteContactAsync(id);
+            } 
 
             return RedirectToAction(nameof(this.Index));
         }
