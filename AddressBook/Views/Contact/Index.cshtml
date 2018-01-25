@@ -69,11 +69,10 @@ else
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Отмена</button>
-				@using (Html.BeginForm("Delete", "Contact", FormMethod.Post))
-	{
-			<input type="hidden" id="contactId" name="id" value="" /> 
-			<button type="submit" class="btn btn-outline-danger">Удалить</button>
-}
+				@using (Html.BeginForm("Delete", "Contact", FormMethod.Post)) {
+					<input type="hidden" id="contactId" name="id" value="" /> 
+					<button type="submit" class="btn btn-outline-danger">Удалить</button>
+				}
 			</div>
 		</div>
 	</div>

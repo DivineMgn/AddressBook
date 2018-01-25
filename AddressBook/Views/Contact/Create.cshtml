@@ -15,61 +15,44 @@
 
 @using (Html.BeginForm("Create", "Contact", FormMethod.Post))
 {
-<div class="form-group">
-	<!--
-		<label for="firstName">Имя</label>
-		<input type="text" class="form-control is-invalid" id="firstName" name="firstName" placeholder="Введите имя" required>
-		<div class="invalid-feedback">
-			Please choose a username.
-		</div>
-	-->
-	@Html.LabelFor(m => m.FirstName)
-	@Html.TextBoxFor(m => m.FirstName, new {
-		@class = "form-control" + (ViewData.ModelState.IsValidField(Html.NameFor(m => m.FirstName).ToString()) ? "" : " is-invalid"),
-		@placeholder = "Введите имя"
-	})
-	@Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "invalid-feedback" }, "div")
-</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.Email)
+		@Html.TextBoxFor(m => m.Email, new
+		{
+			@class = "form-control" + (ViewData.ModelState.IsValidField(Html.NameFor(m => m.Email).ToString()) ? "" : " is-invalid"),
+			@placeholder = "Введите адрес электронной почты",
+			@type = "email"
+		})
+		@Html.ValidationMessageFor(m => m.Email, null, new { @class = "invalid-feedback" }, "div")
+	</div>
 
-<div class="form-group">
-	<!--
-		<label for="lastName">Фамилия</label>
-		<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Введите фамилию" required>
-	-->
-	@Html.LabelFor(m => m.LastName)
-	@Html.TextBoxFor(m => m.LastName, new {
-		@class = "form-control" + (ViewData.ModelState.IsValidField(Html.NameFor(m => m.LastName).ToString()) ? "" : " is-invalid"),
-		@placeholder = "Введите фамилию"
-	})
-	@Html.ValidationMessageFor(m => m.LastName, null, new { @class = "invalid-feedback" }, "div")
-</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.LastName)
+		@Html.TextBoxFor(m => m.LastName, new
+		{
+			@class = "form-control" + (ViewData.ModelState.IsValidField(Html.NameFor(m => m.LastName).ToString()) ? "" : " is-invalid"),
+			@placeholder = "Введите фамилию"
+		})
+		@Html.ValidationMessageFor(m => m.LastName, null, new { @class = "invalid-feedback" }, "div")
+	</div>
 
-<div class="form-group">
-	<!--
-		<label for="secondName">Отчество</label>
-		<input type="text" class="form-control" id="secondName" name="secondName" placeholder="Введите отчество">
-	-->
-	@Html.LabelFor(m => m.SecondName)
-	@Html.TextBoxFor(m => m.SecondName, new {
-		@class = "form-control" + (ViewData.ModelState.IsValidField(Html.NameFor(m => m.SecondName).ToString()) ? "" : " is-invalid"),
-		@placeholder = "Введите отчество"
-	})
-	@Html.ValidationMessageFor(m => m.SecondName, null, new { @class = "invalid-feedback" }, "div")
-</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.FirstName)
+		@Html.TextBoxFor(m => m.FirstName, new {
+			@class = "form-control" + (ViewData.ModelState.IsValidField(Html.NameFor(m => m.FirstName).ToString()) ? "" : " is-invalid"),
+			@placeholder = "Введите имя"
+		})
+		@Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "invalid-feedback" }, "div")
+	</div>
 
-<div class="form-group">
-	<!--
-		<label for="email">Адрес электронной почты</label>
-		<input type="email" class="form-control" id="email" name="email" placeholder="Введите адрес электронной почты" required>
-	-->
-	@Html.LabelFor(m => m.Email)
-	@Html.TextBoxFor(m => m.Email, new {
-		@class = "form-control" + (ViewData.ModelState.IsValidField(Html.NameFor(m => m.Email).ToString()) ? "" : " is-invalid"),
-		@placeholder = "Введите адрес электронной почты",
-		@type = "email"
-	})
-	@Html.ValidationMessageFor(m => m.Email, null, new { @class = "invalid-feedback" }, "div")
-</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.SecondName)
+		@Html.TextBoxFor(m => m.SecondName, new {
+			@class = "form-control" + (ViewData.ModelState.IsValidField(Html.NameFor(m => m.SecondName).ToString()) ? "" : " is-invalid"),
+			@placeholder = "Введите отчество"
+		})
+		@Html.ValidationMessageFor(m => m.SecondName, null, new { @class = "invalid-feedback" }, "div")
+	</div>
 
-<button type="submit" class="btn btn-outline-primary">Сохранить</button>
+	<button type="submit" class="btn btn-outline-primary">Сохранить</button>
 }

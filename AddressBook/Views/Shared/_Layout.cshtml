@@ -9,7 +9,6 @@
 </head>
 <body>
 	<header>
-		<!-- Fixed navbar -->
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"> 
 			@Html.ActionLink("Адресная книга", "Index", "Contact", null, new { @class = "navbar-brand mb-0 h1" })
 			
@@ -40,6 +39,7 @@
 			<span class="text-muted">&copy; @DateTime.Now.Year - Адресная книга</span>
 		</div>
 	</footer>
+
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/bootstrap")
 	@RenderSection("scripts", required: false)
