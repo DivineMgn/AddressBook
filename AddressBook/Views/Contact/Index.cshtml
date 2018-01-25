@@ -29,7 +29,7 @@
 				<div class="d-flex w-100 justify-content-between">
 					<h5 class="mb-1">@contact.FullName</h5>
 					<button type="button" class="close" aria-label="Close" data-toggle="modal" data-target="#deleteConfirmationModal"
-							data-contactid="@contact.Id"
+							data-contactid="@contact.Id" 
 							data-contactname="@contact.FullName">
 						<span aria-hidden="true" class="text-danger">&times;</span>
 					</button>
@@ -82,10 +82,10 @@ else
 			<div class="modal-footer">
 				<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Отмена</button>
 				@using (Html.BeginForm("Delete", "Contact", FormMethod.Post))
-				{
-					<input type="hidden" id="contactId" name="id" value=""/>
-					<button type="submit" class="btn btn-outline-danger">Удалить</button>
-				}
+	{
+			<input type="hidden" id="contactId" name="id" value="" /> 
+			<button type="submit" class="btn btn-outline-danger">Удалить</button>
+}
 			</div>
 		</div>
 	</div>
@@ -98,13 +98,13 @@ else
 	$('#deleteConfirmationModal').on('show.bs.modal', function (event) {
 		var button = $(event.relatedTarget);
 
-		var contactId = button.data('contactid');
+		var contactId = button.data('contactid'); 
 		var contactname = button.data('contactname');
 
 		var modal = $(this);
 
 		modal.find('#deleteMessage').text('Вы действительно хотите удалить контакт "' + contactname + '"?');
-		modal.find('#contactId').val(contactId);
+		modal.find('#contactId').val(contactId); 
 	})
 </script>
 }

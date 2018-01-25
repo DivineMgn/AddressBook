@@ -30,7 +30,7 @@ namespace AddressBook.Services
 
         public async Task<bool> RemoveContactAsync(string id)
         {
-            var filter = Builders<Contact>.Filter.Eq(c => c.Id, new ObjectId(id));
+            var filter = Builders<Contact>.Filter.Eq(c => c.MongoId, new ObjectId(id));
             var result = await _repository.Contacts.DeleteOneAsync(filter);
             return result.DeletedCount != 0;
         }

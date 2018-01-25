@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBook", "AddressBook\AddressBook.csproj", "{BA791115-C2B9-433D-BCA8-33D583E1EDEC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactServiceLibrary", "ContactServiceLibrary\ContactServiceLibrary.csproj", "{A6B58BC3-D128-4527-8995-8884429FBBC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsSQLContactServiceHost", "MsSQLContactServiceHost\MsSQLContactServiceHost.csproj", "{48AE561D-4D59-4796-A4BD-18B72D6170B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{BA791115-C2B9-433D-BCA8-33D583E1EDEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA791115-C2B9-433D-BCA8-33D583E1EDEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA791115-C2B9-433D-BCA8-33D583E1EDEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6B58BC3-D128-4527-8995-8884429FBBC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6B58BC3-D128-4527-8995-8884429FBBC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6B58BC3-D128-4527-8995-8884429FBBC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6B58BC3-D128-4527-8995-8884429FBBC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48AE561D-4D59-4796-A4BD-18B72D6170B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48AE561D-4D59-4796-A4BD-18B72D6170B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48AE561D-4D59-4796-A4BD-18B72D6170B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48AE561D-4D59-4796-A4BD-18B72D6170B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
