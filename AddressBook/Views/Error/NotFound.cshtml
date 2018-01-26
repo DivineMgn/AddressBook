@@ -5,12 +5,15 @@
 }
 
 
-<h1 class="h3 text-danger">@ViewBag.Title</h1>
-<p class="text-danger"><b>Ошибка 404.</b> Страница не найдена.</p>
+<div class="page-header my-4">
+	<h1 class="h3 text-center text-danger">@ViewBag.Title</h1>
+</div>
+
+<p class="text-muted"><b>Ошибка 404.</b> Страница не найдена.</p> 
 
 @Html.ActionLink(
 		linkText: "На главную",
 		actionName: "Index",
 		controllerName: "Contact",
 		routeValues: null,
-		htmlAttributes: new { @class = "btn btn-outline-primary my-2" })
+		htmlAttributes: new { @class = "btn btn-outline-primary" })
