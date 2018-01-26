@@ -143,6 +143,12 @@ namespace AddressBook.ContactServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContactService/DeleteContact", ReplyAction="http://tempuri.org/IContactService/DeleteContactResponse")]
         System.Threading.Tasks.Task DeleteContactAsync(long Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContactService/GetContactDetails", ReplyAction="http://tempuri.org/IContactService/GetContactDetailsResponse")]
+        AddressBook.ContactServiceReference.ContactDto GetContactDetails(long id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContactService/GetContactDetails", ReplyAction="http://tempuri.org/IContactService/GetContactDetailsResponse")]
+        System.Threading.Tasks.Task<AddressBook.ContactServiceReference.ContactDto> GetContactDetailsAsync(long id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -194,6 +200,14 @@ namespace AddressBook.ContactServiceReference {
         
         public System.Threading.Tasks.Task DeleteContactAsync(long Id) {
             return base.Channel.DeleteContactAsync(Id);
+        }
+        
+        public AddressBook.ContactServiceReference.ContactDto GetContactDetails(long id) {
+            return base.Channel.GetContactDetails(id);
+        }
+        
+        public System.Threading.Tasks.Task<AddressBook.ContactServiceReference.ContactDto> GetContactDetailsAsync(long id) {
+            return base.Channel.GetContactDetailsAsync(id);
         }
     }
 }

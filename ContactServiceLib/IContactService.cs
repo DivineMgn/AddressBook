@@ -14,5 +14,8 @@ namespace ContactServiceLib
 
         [OperationContract]
         void DeleteContact(long Id);
+
+        [OperationContract]
+        ContactDto GetContactDetails(long id);
     }
 }

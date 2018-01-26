@@ -278,11 +278,11 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Error\Forbidden.cshtml" />
+    <Content Include="Views\Contact\Details.cshtml" />
     <None Include="Views\Error\InternalServerError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CustomErrors\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

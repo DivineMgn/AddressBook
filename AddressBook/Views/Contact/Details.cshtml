@@ -1,0 +1,39 @@
+﻿@model AddressBook.Models.Contact
+
+
+@{
+	ViewBag.Title = Model.FullName;
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-header my-4">
+	<h2 class="h3 text-center">Карточка контакта "@Model.FullName"</h2>
+</div>
+
+
+<div class="card">
+	<h5 class="card-header">@Model.FullName</h5>
+	<div class="card-body">
+
+		<dl class="row">
+			<dt class="col-md-4">Адрес электронной почты:</dt>
+			<dd class="col-md-8"><a href="mailto:@Model.Email" class="card-subtitle  ">@Model.Email</a></dd>
+
+			<dt class="col-md-4">Фамилия:</dt>
+			<dd class="col-md-8">@Model.LastName</dd>
+
+			<dt class="col-md-4">Имя:</dt>
+			<dd class="col-md-8">@Model.FirstName</dd>
+
+			<dt class="col-md-4">Отчество:</dt>
+			<dd class="col-md-8">@Model.SecondName</dd>
+		</dl>
+
+		@using (Html.BeginForm("Delete", "Contact", FormMethod.Post))
+		{
+			<input type="hidden" id="contactId" name="id" value="@Model.Id" />
+			<button type="submit" class="card-link btn btn-outline-danger float-right">Удалить</button>
+		}
+	</div>
+</div>

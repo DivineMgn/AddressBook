@@ -1,16 +1,12 @@
 ﻿@model AddressBook.Models.Contact
 
-@{ ViewBag.Title = "Создание нового контакта"; } 
+@{ ViewBag.Title = "Создание нового контакта"; }
 
-<div class="page-header">
-	<h2>@ViewBag.Title</h2>
-	@Html.ActionLink(
-		linkText: "На главную",
-		actionName: "Index",
-		controllerName: "Contact",
-		routeValues: null,
-		htmlAttributes: new { @class = "btn btn-outline-primary my-2" })
+<div class="page-header mt-4">
+	<h2 class="h3 text-center">@ViewBag.Title</h2>
 </div>
+
+
 
 
 @using (Html.BeginForm("Create", "Contact", FormMethod.Post))
@@ -38,7 +34,8 @@
 
 	<div class="form-group">
 		@Html.LabelFor(m => m.FirstName)
-		@Html.TextBoxFor(m => m.FirstName, new {
+		@Html.TextBoxFor(m => m.FirstName, new
+		{
 			@class = "form-control" + (ViewData.ModelState.IsValidField(Html.NameFor(m => m.FirstName).ToString()) ? "" : " is-invalid"),
 			@placeholder = "Введите имя"
 		})
@@ -47,7 +44,8 @@
 
 	<div class="form-group">
 		@Html.LabelFor(m => m.SecondName)
-		@Html.TextBoxFor(m => m.SecondName, new {
+		@Html.TextBoxFor(m => m.SecondName, new
+		{
 			@class = "form-control" + (ViewData.ModelState.IsValidField(Html.NameFor(m => m.SecondName).ToString()) ? "" : " is-invalid"),
 			@placeholder = "Введите отчество"
 		})
@@ -55,4 +53,11 @@
 	</div>
 
 	<button type="submit" class="btn btn-outline-primary">Сохранить</button>
+
+	@Html.ActionLink(
+			linkText: "На главную",
+			actionName: "Index",
+			controllerName: "Contact",
+			routeValues: null,
+			htmlAttributes: new { @class = "btn btn-outline-warning float-right" })
 }

@@ -20,13 +20,33 @@ namespace ContactServiceLib
                 {
                     FirstName = contact.FirstName,
                     LastName = contact.LastName,
-                    SecondName = contact.LastName,
+                    SecondName = contact.SecondName,
                     Email = contact.Email
                 });
             _context.Contacts.Add(newContact);
             _context.SaveChanges();
 
             return newContact.Id;
+        }
+
+        public ContactDto GetContactDetails(long id)
+        {
+            var contact = _context.Contacts.Where(c => c.Id == id).FirstOrDefault();
+
+            if (contact != null)
+            {
+                // TODO: AutoMapper
+                return new ContactDto()
+                {
+                    Id = contact.Id,
+                    FirstName = contact.FirstName,
+                    LastName = contact.LastName,
+                    SecondName = contact.SecondName,
+                    Email = contact.Email
+                };
+            }
+
+            return null;
         }
 
         public void DeleteContact(long Id)

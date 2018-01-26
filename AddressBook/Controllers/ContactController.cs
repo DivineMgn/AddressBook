@@ -40,6 +40,30 @@ namespace AddressBook.Controllers
             return View();
         }
 
+        public async Task<ActionResult> Details(long id)
+        {
+            var dtoContact = await _contactService.GetContactDetailsAsync(id);
+
+            if (dtoContact != null)
+            {
+                // TODO: AutoMapper
+                Contact contact = new Contact()
+                {
+                    Id = dtoContact.Id,
+                    FirstName = dtoContact.FirstName,
+                    LastName = dtoContact.LastName,
+                    SecondName = dtoContact.SecondName,
+                    Email = dtoContact.Email
+                };
+
+                return View(contact);
+            }
+
+            return RedirectToAction(
+                actionName: "NotFound",
+                controllerName: "Error");
+        }
+
 
         [HttpPost]
         public async Task<ActionResult> Create(Contact contact)

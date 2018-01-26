@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b9960a03-968b-4ff2-8b48-cbb73d30bdfb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1a442d04-bf33-44cc-8938-5e0d9a3df57f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,10 +22,10 @@
     <MetadataSource Address="http://localhost:38005/ContactService/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="4c0dd7cf-2d0d-445b-b301-edd322c6581f" SourceId="1" SourceUrl="http://localhost:38005/ContactService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="d9a4a6da-8e83-4be9-802f-812453ca9691" SourceId="1" SourceUrl="http://localhost:38005/ContactService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="c4245f6c-4d52-4268-a85b-fe469a35a507" SourceId="1" SourceUrl="http://localhost:38005/ContactService/mex" />
-    <MetadataFile FileName="ContactServiceLib.xsd" MetadataType="Schema" ID="a9137eba-83b1-4e1f-9578-b41e32a1c255" SourceId="1" SourceUrl="http://localhost:38005/ContactService/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="5b686f78-b38c-475f-a1f9-25450b2ac780" SourceId="1" SourceUrl="http://localhost:38005/ContactService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="89e0ed4e-59f4-4398-aa87-26cede6c18e9" SourceId="1" SourceUrl="http://localhost:38005/ContactService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="23d6ab61-218b-405e-854c-c0fb3251218b" SourceId="1" SourceUrl="http://localhost:38005/ContactService/mex" />
+    <MetadataFile FileName="ContactServiceLib.xsd" MetadataType="Schema" ID="97faeb44-ee0b-4ac1-a86d-331226ee23cf" SourceId="1" SourceUrl="http://localhost:38005/ContactService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
