@@ -1,0 +1,15 @@
+﻿
+@{
+	ViewBag.Title = "Упс! произошла ошибка.";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="h3 text-danger">@ViewBag.Title</h1>
+<p class="text-danger"><b>Ошибка 500.</b> Ошибка при обработке запроса.</p>
+
+@Html.ActionLink(
+		linkText: "На главную",
+		actionName: "Index",
+		controllerName: "Contact",
+		routeValues: null,
+		htmlAttributes: new { @class = "btn btn-outline-primary my-2" })
